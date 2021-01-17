@@ -1,0 +1,60 @@
+//Solution en utilisant une procedure
+PROCEDURE dot_product(v1,v2:ARRAY_OF FLOAT[])
+VAR
+    ps:FLOAT:=0;
+    i:INTEGER;
+BEGIN
+
+    WHILE (v1.length = v2.length) DO   
+        FOR i FROM 0 TO v1.length-1 STEP 1  DO
+            ps:=ps+v1[i]*v2[i];       
+        END_FOR   
+    END_WHILE
+    WRITE(ps);
+END
+ALGORITHM produitScalaire
+VAR
+    i:INTEGER:=1;
+    n:INTEGER;
+BEGIN
+    WHILE (i<n) DO
+        IF (dot_product(vi,vi+1)=0) THEN
+            WRITE(vi," et ",vi+1," sont orthogonaux");
+        ELSE
+            WRITE(vi," et ",vi+1," ne sont pas orthogonaux");
+        END_IF
+        i:=i+2;
+    END_WHILE
+END
+
+//Solution en utilisant une fonction
+FUNCTION dot_product(v1,v2:ARRAY_OF FLOAT[]):FLOAT
+VAR
+    ps:FLOAT:=0;
+    i:INTEGER;
+BEGIN
+
+    WHILE (v1.length = v2.length) DO   
+        FOR i FROM 0 TO v1.length-1 STEP 1  DO
+            ps:=ps+v1[i]*v2[i];       
+        END_FOR   
+    END_WHILE
+    RETURN ps;
+END
+
+ALGORITHM produitScalaire
+VAR
+    i:INTEGER:=1;
+    n:INTEGER;
+    pr:FLOAT;
+BEGIN
+    WHILE (i<n) DO
+        pr:=dot_product(vi,vi+1);
+        IF (pr=0) THEN
+            WRITE(vi," et ",vi+1," sont orthogonaux");
+        ELSE
+            WRITE(vi," et ",vi+1," ne sont pas orthogonaux");
+        END_IF
+        i:=i+2;
+    END_WHILE
+END
